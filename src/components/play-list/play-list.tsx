@@ -48,23 +48,11 @@ export const PlayList = component$(() => {
       ) : null}
       <div class={" bg-gray-100 rounded-t-2xl "}>
         <div class={"p-6 py-4 border-b  border-gray-200"}>sss</div>
-        <div class={"p-6 flex flex-col gap-6"}>
-            <PlayListItem />
-            <PlayListItem />
-            <PlayListItem />
-            <PlayListItem />
-            <PlayListItem />
-            <PlayListItem />
-            <PlayListItem />
-            <PlayListItem />
-            <PlayListItem />
-            <PlayListItem />
-            <PlayListItem />
-            <PlayListItem />
-            <PlayListItem />
-            <PlayListItem />
-            <PlayListItem />
-            <PlayListItem />
+        <div class={"p-6 flex flex-col gap-2"}>
+            {
+                [1,1,1,1,1,1,1,1,1].map((i) => <> <PlayListItem /></>)
+            }
+          
         </div>
       </div>
     </div>
