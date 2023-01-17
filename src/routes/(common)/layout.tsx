@@ -6,7 +6,7 @@ import { Logo } from "~/components/logo/logo";
 import { Sidebar } from "~/components/sidebar/sidebar";
 
 
-export const onGet: RequestHandler = async ({ redirect, cookie }) => {
+export const onGet: RequestHandler = async ({  cookie }) => {
   const user = await isUserAuthenticated(cookie)
   console.log('------',user)
   if (user) {

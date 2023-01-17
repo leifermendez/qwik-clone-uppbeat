@@ -1,6 +1,5 @@
 import { component$ } from "@builder.io/qwik";
-import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
-import { isUserAuthenticated } from "~/auth/auth";
+import type { DocumentHead } from "@builder.io/qwik-city";
 import { HeadInfo } from "~/components/head-info/head-info";
 
 export default component$(() => {
