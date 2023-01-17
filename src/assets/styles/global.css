@@ -15,7 +15,7 @@ html, body{
     }
 
     .qwik-button-primary{
-        @apply p-2 px-3 bg-pink-600 hover:bg-pink-800 text-white rounded-3xl text-sm h-[40px] min-w-[100px] w-max flex gap-1 content-center items-center justify-center
+        @apply p-2 px-3 bg-pink-600 hover:bg-pink-800 text-white rounded-3xl text-sm h-[40px] min-w-[50px] w-max flex gap-1 content-center items-center justify-center
     }
 
     .qwik-button-default{

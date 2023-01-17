@@ -1,15 +1,19 @@
 import WaveSurfer from "wavesurfer.js";
-import { $, component$, QwikMouseEvent, useClientEffect$, useOn, useSignal } from "@builder.io/qwik";
-import crypto from "crypto";
+import {
+  component$,
+  useClientEffect$,
+  noSerialize,
+  useSignal,
+} from "@builder.io/qwik";
+import { PlayListPropsWave } from "../play-list/play-list-item";
 
-export const PlayerWave = component$(() => {
-  const id = `wave_${crypto.randomBytes(5).toString('hex')}`;
-//   const wave = useSignal(undefined)
+
+export const PlayerWave = component$((props:{id:string, state:PlayListPropsWave}) => {
+  const loading = useSignal(true)
 
   useClientEffect$(() => {
-
-    const wavesurfer = WaveSurfer.create({
-      container: `#${id}`,
+    const waveIn = WaveSurfer.create({
+      container: `#${props.id}`,
       waveColor: "#BBBBBB",
       progressColor: "rgb(219 39 119)",
       height: 70,
@@ -20,19 +24,27 @@ export const PlayerWave = component$(() => {
       responsive: true,
       fillParent: true,
     });
-    wavesurfer.load("https://wavesurfer-js.org/example/media/demo.wav");
-    wavesurfer.on("ready", function () {});
+    props.state.wave = noSerialize(waveIn);
+
+    waveIn.load(props.state.src);
+    waveIn.on("ready", function () {
+      loading.value = false
+    });
+    waveIn.on("play", function () {
+      props.state.play = true
+    });
+    waveIn.on("pause", function () {
+      props.state.play = false
+    });
+
+    return () => {
+   
+    }
   });
 
-//   useOn('click',$((event) => {
-//     const waveHtmlElement = (((event as unknown as PointerEvent).target as HTMLElement).parentNode) as HTMLElement
-//     const h = waveHtmlElement as unknown as WaveSurfer
-//   }))
-
   return (
-    <div  class={"w-full h-[70px]"}>
-      <div id={id}></div>
+    <div onClick$={() => props.state.wave?.play()} class={"w-full h-[70px]"}>
+      <div id={props.id}></div> 
     </div>
   );
-
 });

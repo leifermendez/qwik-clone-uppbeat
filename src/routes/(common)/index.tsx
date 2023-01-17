@@ -1,12 +1,13 @@
 import { component$ } from "@builder.io/qwik";
-import type { DocumentHead } from "@builder.io/qwik-city";
+import type { DocumentHead, RequestHandler } from "@builder.io/qwik-city";
+import { isUserAuthenticated } from "~/auth/auth";
 import { HeadInfo } from "~/components/head-info/head-info";
 
 export default component$(() => {
   return (
     <div>
-      <HeadInfo title="Keep creating, keep inspiring 👌" />
-    </div>
+    <HeadInfo title="Keep creating, keep inspiring 👌" />
+  </div>
   );
 });
 

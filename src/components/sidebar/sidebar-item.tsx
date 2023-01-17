@@ -1,7 +1,6 @@
 import {
   $,
   component$,
-  QwikMouseEvent,
   useStylesScoped$,
 } from "@builder.io/qwik";
 import { useNavigate } from "@builder.io/qwik-city";
@@ -19,7 +18,8 @@ export const SidebarItem = component$(
     const navigation = useNavigate();
 
     const moveToPage = $(() => {
-      if (route) navigation.path = route;
+      console.log('🚩 Navigate to '+route)
+      if (route) navigation(route)
     });
 
     return (
