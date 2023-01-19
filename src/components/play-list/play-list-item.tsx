@@ -5,7 +5,7 @@ import {
 } from "@builder.io/qwik";
 import { PlayerControl } from "../player-wave/player-control";
 import { PlayerWave } from "../player-wave/player-wave";
-import { v4 as uuid } from "uuid";
+
 
 export interface PlayListPropsWave {
   wave?: NoSerialize<WaveSurfer>;
@@ -27,7 +27,7 @@ export const PlayListItem = component$((props:PlayListPropsWave) => {
     play: false,
   });
 
-  const id = `wave_${uuid()}`;
+  const id = `wave_${typeof self !== 'undefined' ? self.crypto.randomUUID() : null}`;
   return (
     <div class={"group"}>
       <div

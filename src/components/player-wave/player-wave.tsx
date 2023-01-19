@@ -4,12 +4,19 @@ import {
   useClientEffect$,
   noSerialize,
   useSignal,
+  useTask$,
 } from "@builder.io/qwik";
 import { PlayListPropsWave } from "../play-list/play-list-item";
+import { useLocation } from "@builder.io/qwik-city";
 
 
 export const PlayerWave = component$((props:{id:string, state:PlayListPropsWave}) => {
   const loading = useSignal(true)
+  const location = useLocation()
+  useTask$(({track}) => {
+    track(() => location.pathname)
+    props.state.wave?.destroy()
+  })
 
   useClientEffect$(() => {
     const waveIn = WaveSurfer.create({
