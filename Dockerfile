@@ -7,5 +7,4 @@ RUN npm run build
 ARG RAILWAY_STATIC_URL
 ARG PUBLIC_URL
 ARG PORT
-EXPOSE ${PORT}
 CMD ["npm", "run", "deploy"]
